@@ -4,13 +4,14 @@ import javax.persistence.Entity;
 
 import com.udacity.jdnd.course3.critter.user.EmployeeSkill;
 
+import java.io.Serializable;
 import java.time.DayOfWeek;
 import java.util.Set;
 
 import javax.persistence.*;
 
 @Entity
-public class Employee {
+public class Employee implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,6 +19,7 @@ public class Employee {
     private String name;
 
     @ElementCollection(targetClass = EmployeeSkill.class)
+    @Enumerated(EnumType.STRING)
     private Set<EmployeeSkill> skills;
 
     @ElementCollection(targetClass = DayOfWeek.class)

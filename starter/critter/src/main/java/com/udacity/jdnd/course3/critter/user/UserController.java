@@ -42,12 +42,11 @@ public class UserController {
     }
 
     @PostMapping("/employee")
-    @ResponseStatus(HttpStatus.CREATED)
-    @ResponseBody
     public EmployeeDTO saveEmployee(@RequestBody EmployeeDTO employeeDTO) {
         Employee emp = convertEmployeeDTOToEmployee(employeeDTO);
-        emp = employeeService.postEmployee(emp);
-        return convertEmployeeToEmployeeDTO(emp);
+        Employee savedemployee = employeeService.postEmployee(emp);
+        employeeDTO.setId(savedemployee.getId());
+        return employeeDTO;
     }
 
     private EmployeeDTO convertEmployeeToEmployeeDTO(Employee employee) {

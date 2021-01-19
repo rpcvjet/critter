@@ -10,12 +10,11 @@ import org.springframework.context.annotation.Primary;
 
 @Configuration
 public class DatasourceConfig {
-    @Bean
-    @Primary
-    @ConfigurationProperties(prefix = "spring.datasource")
-    public DataSource getDataSource() {
-        DataSourceBuilder dsb = DataSourceBuilder.create();
-        dsb.url("jdbc:mysql://localhost:3306/critter");
-        return dsb.build();
-    }
+    // @Primary
+    // @ConfigurationProperties(prefix = "spring.datasource")
+    // public DataSource getDataSource() {
+    // DataSourceBuilder dsb = DataSourceBuilder.create();
+    // dsb.url("jdbc:mysql://localhost:3306/critter");
+    // return dsb.build();
+    // }
 }
