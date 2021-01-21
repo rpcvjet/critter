@@ -9,18 +9,19 @@ import javax.persistence.*;
 import lombok.Data;
 
 @Entity
-@Data
 public class Pet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String type;
+
     private String name;
     private LocalDate birthDate;
     private String notes;
 
-    @ManyToOne(targetEntity = Customer.class)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id")
     private Customer customer;
 
     public Long getId() {
